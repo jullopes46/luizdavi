@@ -1,26 +1,22 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // 1. Seleciona os elementos HTML
-    const nasc = document.getElementById('nascimento');
-    const respota = document.getElementById('resultado');
+const textoNasc = document.getElementById('nasc').innerText;
+const dataMath = textoNasc.match(/(\d{2})\/(\d{2})\/(\d{4})/);
 
-    // 2. Obtém o texto da data (ex: "21/06/2019")
-    const dataTexto = nasc.innerText.trim();
-    
-    // 3. Converte o formato BR (DD/MM/AAAA) para o formato que o JS entende (AAAA-MM-DD)
-    const partes = dataTexto.split('/');
-    const dataNascimento = new Date(`${partes[2]}-${partes[1]}-${partes[0]}`);
+if (dataMath) {
+    const diaNasc = parseInt(dataMath[1]);
+    const mesNasc = parseInt(dataMath[2]) - 1;
+    const anoNasc = parseInt(dataMath[3]);
 
-    const hoje = new Date();
-    
-    // 4. Cálculo da idade
-    let idade = hoje.getFullYear() - dataNascimento.getFullYear();
-    const mes = hoje.getMonth() - dataNascimento.getMonth();
+    const dataAtual = new Date();
+    const diaAtual = dataAtual.getDate();
+    const mesAtual = dataAtual.getMonth();
+    const anoAtual = dataAtual.getFullYear();
 
-    // Ajuste caso ainda não tenha chegado o dia/mês do aniversário no ano atual
-    if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+    let idade = anoAtual - anoNasc;
+
+    if (mesAtual < mesNasc || (mesAtual === mesNasc && diaAtual < diaNasc)) {
         idade--;
     }
 
-    // 5. Exibe o resultado no HTML
-    respota.innerText = `${idade} anos`;
-});
+    const campoResposta = document.getElementById('resposta');
+    campoResposta.innerText = `Idade: ${idade} anos`;
+}
