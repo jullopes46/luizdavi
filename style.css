@@ -1,5 +1,5 @@
-/* Importando uma fonte moderna */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+/* Importando uma fonte moderna e limpa do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
 * {
     margin: 0;
@@ -8,94 +8,153 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f4f7f9;
-    color: #2d3436;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--azul-gelo); /* Fundo suave, cansa menos os olhos */
+    color: #2d3748; /* Cinza escuro profissional em vez de preto puro */
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Container Geral (O Card Principal) */
+.geral {
+    background: var(--branco-puro); /* Branco puro para destaque */
+    width: 100%;
+    max-width: 450px; /* Tamanho ideal para celular ou crachá */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Sombra suave moderna */
+    overflow: hidden;
+    border: 1px solid var(--azul-suave); /* Borda sutil para definição */
+}
+
+.foto-container {
+    width: 140px;
+    height: 185px;
+    background-color: #e2e8f0; /* Fundo cinza suave caso esteja sem foto */
+    margin: 0 auto 20px auto;
+    border-radius: 12px;
+    border: 4px solid #ffffff; /* Borda branca grossa para destacar do fundo azul */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Garante que a foto preencha perfeitamente o retângulo sem distorcer */
+.foto-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Texto temporário caso não exista arquivo de imagem ainda */
+.foto-placeholder {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+    padding: 10px;
+    text-shadow: none;
+}
+
+/* Bloco da Criança - O Destaque do Site */
+#crianca {
+    background: linear-gradient(0deg, var(--azul-escuro), var(--azul-diamente)); /* Degradê azul moderno */
+    color: var(--branco-puro);
+    text-align: center;
     padding: 40px 20px;
 }
 
-header {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-header h1 {
-    color: #2c3e50;
-    font-size: 1.8rem;
-    font-weight: 600;
+#crianca h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
     letter-spacing: -0.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Container de Cartões */
-#nome, #formulario {
-    background: #ffffff;
-    width: 100%;
-    max-width: 450px;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+#crianca h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.9;
     margin-bottom: 20px;
-    border: 1px solid #e1e8ed;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilização dos Blocos de Informação */
-p {
-    margin-bottom: 15px;
+#nasc {
+    display: block;
+    font-size: 0.9rem;
+    background: var(--azul-diamente);
+    padding: 6px 16px;
+    border-radius: 8px;
+    width: fit-content;
+    margin: 0 auto 15px auto;
+}
+
+/* Estilização da idade calculada pelo JS */
+#resposta {
+    font-size: 1.4rem;
+    font-weight: 600;
+    background: var(--branco-puro);
+    color: var(--azul-escuro);
+    padding: 8px 20px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+/* Bloco dos Pais e Contatos */
+#pais {
+    padding: 30px 25px;
     display: flex;
     flex-direction: column;
+    gap: 12px; /* Espaçamento idêntico entre as linhas */
 }
 
-label[for="#"], #index {
-    font-size: 0.75rem;
-    font-weight: 600;
+/* Ajustando os itens de informação */
+.info-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--azul-suave);
+    padding-bottom: 8px;
+}
+
+/* Deixa os títulos em negrito sutil */
+.info-item span {
+    font-size: 0.8rem;
     text-transform: uppercase;
-    color: #95a5a6;
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
-}
-
-/* Dados em destaque */
-label:not([for="#"]), #dados, #nascimento, #resultado {
-    font-size: 1.05rem;
-    color: #2c3e50;
-    font-weight: 400;
-}
-
-#resultado {
+    color: var(--azul-destaque);
     font-weight: 600;
-    color: #0984e3; /* Azul destaque para a idade */
+    margin-bottom: 2px;
 }
 
-/* Estilo específico para o formulário de contato */
-#formulario {
-    border-left: 5px solid #0984e3;
-}
-
-#formulario label {
-    display: block;
-}
-
-#formulario br {
-    display: block;
-    content: "";
-    margin-top: 15px;
+span {
+    color: var(--azul-escuro);
 }
 
 /* Rodapé */
 footer {
     margin-top: 20px;
     font-size: 0.8rem;
-    color: #b2bec3;
+    color: #a4aebb;
     text-align: center;
 }
 
-/* Efeito Hover nos cards */
-#nome:hover, #formulario:hover {
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+:root {
+    --azul-diamente: #1d4ed8; /*para o topo do card, botões principais e links importantes*/
+    --rosa-diamente: #be185d; /*rosa escuro magenta elegante para o topo do cart e titulos*/
+    --azul-destaque: #3b82f6; /*otimo para efeitos de passar o mouse(hover) ou tags de destaques*/
+    --rosa-destaque: #f43f5e; /*um tom mais aberto e alegre perfeito para detalhes e degrades*/
+    --azul-escuro: #1e293b; /*use para textos, titulos e elementos que precisam de leitura clara*/
+    --rosa-escuro: #371c27; /* um tom quase preto, mais com fundo rosa, ideal para textos super legiveis*/
+    --azul-suave: #e2e8f0; /*perfeito para divisoria, bordas de inputs ou contornos sutis*/
+    --azul-gelo: #f0f4f8; /*fundo ideial para a pagina, pois descansa os olhos*/
+    --rosa-suave: #fbcfe8; /* perfeito para linhas divisorias e contornos sutis*/
+    --rosa-gelo: #fff1f2; /* um fundo clarissimo com toque rosado, muito confortavel para os olhos*/
+    --branco-puro: #ffffff;/*para o fundo do card interno e textos que ficam em cima do azul escuro*/
 }
